@@ -26,15 +26,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        DataServices.shared.location = "Hà Nội"
+        DataServices.shared.location = "Ha Noi"
         registerNotification()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    //Notification
+    //MARK: Notification
     func registerNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateData), name: NotificationKey.data, object: nil)
     }
@@ -51,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
         collectionView.reloadData()
     }
-    //CollectionView
+    //MARK: CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = DataServices.shared.weather?.hourly.count else {return 0}
         return (count-1)
@@ -75,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    //TableView
+    //MARK: TableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = DataServices.shared.weather?.daily.count else {return 0}

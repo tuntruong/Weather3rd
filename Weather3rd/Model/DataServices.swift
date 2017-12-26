@@ -38,9 +38,7 @@ class DataServices {
             if error == nil {
                 guard let location = placemarks?.first?.location else {return}
                 let urlString = baseUrl + "\(location.coordinate.latitude),\(location.coordinate.longitude)"
-                guard let url = URL(string: urlString ) else {
-                    return
-                }
+                guard let url = URL(string: urlString ) else {return}
                 print(urlString)
                 let urlRequest = URLRequest(url: url)
                 self.makeDataTaskRequest(request: urlRequest){
